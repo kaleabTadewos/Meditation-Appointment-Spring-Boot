@@ -9,6 +9,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
+//Here using jackson we able to ignore null fields not be a part of Json serialized result.
+//implements Serizalizable : is just a way to tell , this object can be serialized at transfered through network , there is
+//nothing you need to implement.
+
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO implements Serializable {
