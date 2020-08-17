@@ -93,8 +93,6 @@ public class Appointment {
 		return user;
 	}
 
-
-
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -107,6 +105,9 @@ public class Appointment {
 		this.reservations = reservations;
 	}
 
+	//Here what happen is this:
+	// Appointment and Reservation have Bi Directional Association , so we have to make sure this association persisted.
+	// so whenever a new reservation added to a reservation - it should also know this appointment as its appointment.
 	public void addReservation(Reservation reservation) {
 		reservation.setAppointment(this);
 		this.reservations.add(reservation);

@@ -13,6 +13,8 @@ public class Reservation {
 	@Id
 	@GeneratedValue
 	private int id;
+	
+	//by default hibernate map enum into numbers so to make String instead use @Enumerated(EnumType.STRING)
 
 	@Enumerated(EnumType.STRING)
 	private ReservationStatus status;

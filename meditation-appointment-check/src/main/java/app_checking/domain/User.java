@@ -35,6 +35,10 @@ public class User {
         this.role = role;
     }
 
+    //Use of annotations:
+    //  @OneToMany -> for one to many relation. 
+    //	@ManyToMany -> for many to many , associative table will be created by hibernate.
+    //	Cascade is specified so that something is happen on user , then related table will be affected also.
     @ManyToMany(cascade = CascadeType.ALL)
     List<UserRole> role;
     
