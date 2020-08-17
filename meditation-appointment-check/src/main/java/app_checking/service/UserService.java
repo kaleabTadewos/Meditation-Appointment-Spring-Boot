@@ -6,7 +6,9 @@ import app_checking.util.CustomError;
 
 import java.util.List;
 
-public interface UserService {
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public interface UserService extends UserDetailsService {
 
     UserDTO save(UserDTO user) throws CustomError;
     List<UserDTO> findAll();
