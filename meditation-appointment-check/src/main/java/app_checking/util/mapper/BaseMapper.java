@@ -7,9 +7,9 @@ import org.springframework.data.repository.NoRepositoryBean;
 import java.io.Serializable;
 
 @NoRepositoryBean
-public abstract class BaseMapper <Source, Target extends Serializable>{
+public abstract class BaseMapper <Source, Target>{
 
-    private BoundMapperFacade<Source, Target> mapper;
+    protected final BoundMapperFacade<Source, Target> mapper;
 
     private Class<Source> sourceType;
 

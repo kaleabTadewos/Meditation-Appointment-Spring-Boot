@@ -1,5 +1,4 @@
-//package app_checking.util.mapper;
-//
+//package app_checking.util.mapper.requestdtotoentity;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Component;
@@ -7,7 +6,7 @@
 //import app_checking.domain.Appointment;
 //import app_checking.domain.Location;
 //import app_checking.domain.User;
-//import app_checking.dto.AppointmentRequest;
+//import app_checking.dto.request.AppointmentRequest;
 //import app_checking.dto.UserDTO;
 //import app_checking.service.LocationService;
 //import app_checking.service.UserService;
