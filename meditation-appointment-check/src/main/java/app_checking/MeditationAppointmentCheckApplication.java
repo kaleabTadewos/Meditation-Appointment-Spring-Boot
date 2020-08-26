@@ -14,9 +14,9 @@ public class MeditationAppointmentCheckApplication {
 		SpringApplication.run(MeditationAppointmentCheckApplication.class, args);
 	}
 	
-	@Bean
-    public MapperFactory mapperFactory(){
-        return new DefaultMapperFactory.Builder().build();
-    }
+//	@Bean
+//    public MapperFactory mapperFactory(){
+//        return new DefaultMapperFactory.Builder().build();
+//    }
 
 }
