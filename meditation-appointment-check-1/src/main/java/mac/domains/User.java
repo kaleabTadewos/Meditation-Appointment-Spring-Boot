@@ -1,4 +1,4 @@
-package app_checking.domain;
+package mac.domains;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -27,13 +27,13 @@ public class User {
     private Date updatedDate;
 
 
-    public List<Role> getRole() {
-        return role;
-    }
-
-    public void setRole(List<Role> role) {
-        this.role = role;
-    }
+//    public List<UserRole> getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(List<UserRole> role) {
+//        this.role = role;
+//    }
 
     //Use of annotations:
     //  @OneToMany -> for one to many relation. 
@@ -42,11 +42,11 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     List<Role> role;
     
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private List<Appointment> appointments;
-    
-    @OneToMany(mappedBy = "consumer", cascade = CascadeType.REMOVE)
-    private List<Reservation> reservations;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+//    private List<Appointment> appointments;
+//    
+//    @OneToMany(mappedBy = "consumer", cascade = CascadeType.REMOVE)
+//    private List<Reservation> reservations;
     
     
 //    private Reservation reservation;

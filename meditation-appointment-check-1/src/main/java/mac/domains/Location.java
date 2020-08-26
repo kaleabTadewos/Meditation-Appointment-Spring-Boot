@@ -1,28 +1,36 @@
-package app_checking.dto;
+package mac.domains;
 
-import java.io.Serializable;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
 import java.util.Date;
 
-public class LocationResponse implements Serializable {
+@Entity
+public class Location {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue
 	private int id;
-	
+
 	private String street;
-	
 	private String city;
 	private String state;
 	private String zipcode;
 	private String buildNo;
 	private String roomNo;
-	
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
 	private Date createdDate;
-	
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@UpdateTimestamp
 	private Date updatedDate;
+
+	public Location() {
+
+	}
 
 	public int getId() {
 		return id;
@@ -96,5 +104,9 @@ public class LocationResponse implements Serializable {
 		this.updatedDate = updatedDate;
 	}
 	
-    
+	
+	
+	
+	
+
 }

@@ -15,7 +15,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 
 @Entity
-public class UserRole {
+public class Role {
 	
 	@Id
 	@GeneratedValue
@@ -44,7 +44,7 @@ public class UserRole {
     private Date updatedDate;
     
     
-    public UserRole() {
+    public Role() {
     }
 
 
@@ -87,7 +87,4 @@ public class UserRole {
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
-	
-	
-
 }
