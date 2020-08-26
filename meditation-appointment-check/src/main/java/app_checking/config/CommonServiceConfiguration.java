@@ -19,4 +19,5 @@ public class CommonServiceConfiguration {
     public MapperFactory mapperFactory(){
         return new DefaultMapperFactory.Builder().build();
     }
+    
 }

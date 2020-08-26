@@ -1,7 +1,7 @@
 package app_checking.controller;
 
 import app_checking.domain.Location;
-import app_checking.dto.LocationResponse;
+import app_checking.dto.response.LocationResponse;
 import app_checking.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -7,10 +7,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import app_checking.domain.Location;
-import app_checking.dto.LocationResponse;
+import app_checking.dto.response.LocationResponse;
 import app_checking.repository.LocationRepo;
 import app_checking.service.LocationService;
-import app_checking.util.mapper.LocationResponseMapper;
+import app_checking.util.mapper.entitytoresponsedto.LocationResponseMapper;
 
 import java.util.List;
 import java.util.Optional;

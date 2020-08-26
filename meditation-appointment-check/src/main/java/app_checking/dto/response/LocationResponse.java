@@ -1,4 +1,4 @@
-package app_checking.dto;
+package app_checking.dto.response;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -3,7 +3,7 @@ package app_checking.service;
 import java.util.List;
 
 import app_checking.domain.Location;
-import app_checking.dto.LocationResponse;
+import app_checking.dto.response.LocationResponse;
 
 public interface LocationService {
 
