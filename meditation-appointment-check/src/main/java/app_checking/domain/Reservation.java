@@ -17,10 +17,8 @@ public class Reservation {
 	//by default hibernate map enum into numbers so to make String instead use @Enumerated(EnumType.STRING)
 
 	@Enumerated(EnumType.STRING)
+	@Column(nullable=false)
 	private ReservationStatus status;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date reservationDate;
 
 	@ManyToOne
 	@JoinColumn(name="consumer_id")
@@ -28,6 +26,7 @@ public class Reservation {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
+	@Column(updatable = false)
 	private Date createdDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -67,19 +66,6 @@ public class Reservation {
 	public void setStatus(ReservationStatus status) {
 		this.status = status;
 	}
-
-
-
-	public Date getReservationDate() {
-		return reservationDate;
-	}
-
-
-
-	public void setReservationDate(Date reservationDate) {
-		this.reservationDate = reservationDate;
-	}
-
 
 
 	public User getConsumer() {
