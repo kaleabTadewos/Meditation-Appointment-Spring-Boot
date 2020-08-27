@@ -43,4 +43,15 @@ public class UserRequestToUserEntityMapper extends BaseMapper<UserRequest , User
       }
 	}
 	
+	 public List<User> mapList(List<UserRequest> userRequests){
+	    	if(null == userRequests){
+				return null;
+			}
+			else {
+				return userRequests.stream()
+						.map((userRequest) -> this.map(userRequest))
+						.collect(Collectors.toList());
+			}
+	    }
+	
 }
