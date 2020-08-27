@@ -20,6 +20,7 @@ public class Appointment {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
+	@Column(updatable = false)
 	private Date createdDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
