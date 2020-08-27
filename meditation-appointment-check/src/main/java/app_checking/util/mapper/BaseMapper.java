@@ -5,6 +5,8 @@ import ma.glasnost.orika.MapperFactory;
 import org.springframework.data.repository.NoRepositoryBean;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @NoRepositoryBean
 public abstract class BaseMapper <Source, Target>{
@@ -32,6 +34,17 @@ public abstract class BaseMapper <Source, Target>{
 
     public Target map(Source source){
         return mapper.map(source);
+    }
+    
+    public List<Target> mapList(List<Source> source){
+    	if(null == source){
+			return null;
+		}
+		else {
+			return source.stream()
+					.map(mapper::map)
+					.collect(Collectors.toList());
+		}
     }
 
     public Target map(Source source, Target target){
