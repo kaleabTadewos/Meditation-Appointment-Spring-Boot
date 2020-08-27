@@ -7,6 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public interface LocationRepo extends JpaRepository<Location, Integer>{
+public interface LocationRepository extends JpaRepository<Location, Integer>{
 		
 }

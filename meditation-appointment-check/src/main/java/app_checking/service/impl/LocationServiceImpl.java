@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import app_checking.domain.Location;
 import app_checking.dto.response.LocationResponse;
-import app_checking.repository.LocationRepo;
+import app_checking.repository.LocationRepository;
 import app_checking.service.LocationService;
 import app_checking.util.mapper.entitytoresponsedto.LocationResponseMapper;
 
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class LocationServiceImpl implements LocationService {
 	
 	@Autowired
-    LocationRepo locationRepository;
+    LocationRepository locationRepository;
 
 	@Autowired
 	protected LocationResponseMapper responseMapper;

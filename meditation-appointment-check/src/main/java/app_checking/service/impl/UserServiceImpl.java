@@ -93,26 +93,14 @@ public class UserServiceImpl implements UserService {
 	@Transactional(readOnly = true)
 	public List<UserResponse> findAll() {
 		List<User> users = userRepository.findWithRoles();
-		return users.stream().map(responseMapper::map).collect(Collectors.toList());
+		return responseMapper.mapList(users);
+		//return users.stream().map(responseMapper::map).collect(Collectors.toList());
 	}
 
 	@Transactional(readOnly = true)
 	public UserResponse findById(int userid) {
 		Optional<User> user = userRepository.findById(userid);
 		return user.map(responseMapper::map).get();
-	}
-
-
-	@Override
-	public List<UserResponse> convertEntityListToResponse(List<User> userList) {
-		if(null == userList){
-			return null;
-		}
-		else {
-			return userList.stream()
-					.map(responseMapper::map)
-					.collect(Collectors.toList());
-		}
 	}
 
 	public UserResponse update(int userId, UserRequest userRequest) throws CustomError {
@@ -164,6 +152,19 @@ public class UserServiceImpl implements UserService {
 		Optional<User> user = userRepository.findById(userId);
 		if(user.isPresent()){
 			userRepository.deleteById(userId);
+		}
+	}
+	
+
+	@Override
+	public List<UserResponse> convertEntityListToResponse(List<User> userList) {
+		if(null == userList){
+			return null;
+		}
+		else {
+			return userList.stream()
+					.map(responseMapper::map)
+					.collect(Collectors.toList());
 		}
 	}
 }
