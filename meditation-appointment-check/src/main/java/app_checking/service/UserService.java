@@ -17,5 +17,4 @@ public interface UserService //extends UserDetailsService
     UserResponse update(int userId,UserRequest user) throws CustomError;
     void delete(int userId);
     UserResponse findById(int userId);
-    public List<UserResponse> convertEntityListToResponse(List<User> userList);
 }

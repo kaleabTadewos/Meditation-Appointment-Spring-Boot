@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserResponse implements Serializable {
-    private int id;
+    //private int id;
     private String email;
     private String firstName;
     private String lastName;
@@ -17,13 +17,13 @@ public class UserResponse implements Serializable {
     public UserResponse() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getEmail() {
         return email;

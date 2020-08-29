@@ -28,13 +28,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserRepository userRepository;
-
 
 	@Autowired
 	UserRequestToUserEntityMapper requestMapper;
@@ -120,7 +118,7 @@ public class UserServiceImpl implements UserService {
 		if(userRequest.getEmail() != null && userRequest.getEmail().length() > 0)
 		{
 			List<User> usrLst = userRepository.findByEmail(userRequest.getEmail());
-			if(usrLst.get(0).getId() != userId)
+			if(usrLst != null && usrLst.get(0).getId() != userId)
 			{
 				throw new CustomError(400,"Email already used by another user",null);
 			}
@@ -145,6 +143,7 @@ public class UserServiceImpl implements UserService {
 			oldUser.setRole(roles);
 		}
 		
+		userRepository.save(oldUser);
 		return responseMapper.map(oldUser);
 	}
 
@@ -155,16 +154,4 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	
-
-	@Override
-	public List<UserResponse> convertEntityListToResponse(List<User> userList) {
-		if(null == userList){
-			return null;
-		}
-		else {
-			return userList.stream()
-					.map(responseMapper::map)
-					.collect(Collectors.toList());
-		}
-	}
 }
