@@ -1,6 +1,6 @@
 package app_checking.util;
 
-public class CustomError extends Exception{
+public class CustomError extends Exception {
     private Integer code;
     private String message;
     private Object details;
