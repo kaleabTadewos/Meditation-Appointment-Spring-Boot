@@ -13,6 +13,7 @@ public class Appointment {
 	@Id
 	@GeneratedValue
 	private int id;
+	
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
