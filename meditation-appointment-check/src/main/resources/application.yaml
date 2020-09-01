@@ -1,11 +1,17 @@
 server:
-  port: 8081
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: src/main/resources/kaleabkey.p12
+    key-store-password: 12345678
+    key-store-type: PKCS12
+    key-alias: kaleabkey
 spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: kaleabero@gmail.com 
-    password: lionKING123*456
+    username: tadewoskaleab@yahoo.com
+    password: lionking@
     properties:
       mail:
         smtp:
