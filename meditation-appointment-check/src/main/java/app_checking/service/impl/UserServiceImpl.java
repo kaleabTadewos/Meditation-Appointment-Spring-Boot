@@ -1,12 +1,7 @@
 package app_checking.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.context.SecurityContextHolder;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +25,9 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
 	UserRepository userRepository;
@@ -82,7 +80,7 @@ public class UserServiceImpl implements UserService {
 		User user = requestMapper.map(userRequest);
 
 		//user.setPassword(passwordEncoder.encode(user.getPassword()));
-		user.setPassword(user.getPassword());
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		UserResponse userResponse = responseMapper.map(user);
 		User newUser = userRepository.save(user);
 		return userResponse;
@@ -131,7 +129,7 @@ public class UserServiceImpl implements UserService {
 		if(userRequest.getPassword() != null && userRequest.getPassword().length() > 0)
 		{
 			//oldUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-			oldUser.setPassword(userRequest.getPassword());
+			oldUser.setPassword(passwordEncoder.encode(userRequest.getPassword()));
 		}
 		if(userRequest.getRoles() != null && userRequest.getRoles().length > 0)
 		{

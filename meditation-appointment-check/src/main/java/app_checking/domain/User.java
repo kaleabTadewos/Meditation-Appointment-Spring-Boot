@@ -12,11 +12,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
     private char gender;
+    private boolean isActive;
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
@@ -120,5 +122,24 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+    
+	
+    
 
 }

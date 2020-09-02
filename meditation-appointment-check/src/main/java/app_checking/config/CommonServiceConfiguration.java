@@ -8,6 +8,8 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import ma.glasnost.orika.MapperFactory;
@@ -60,5 +62,10 @@ public class CommonServiceConfiguration {
         connector.setRedirectPort(8443);
         return connector;
     }
+    
+    @Bean
+    BCryptPasswordEncoder passwordEncoder() {
+    	return new BCryptPasswordEncoder();
+	}
     
 }
