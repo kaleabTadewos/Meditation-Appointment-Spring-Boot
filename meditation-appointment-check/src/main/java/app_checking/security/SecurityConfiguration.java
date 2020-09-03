@@ -9,7 +9,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import app_checking.repository.UserRepository;
+import app_checking.security.jwt.JwtAuthenticationFilter;
+import app_checking.security.jwt.JwtAuthorizationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -21,6 +26,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
+	@Autowired
+	private UserRepository userRepository;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
@@ -31,6 +39,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
+		   // .cors().and()
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			.and()
+			.addFilter(new JwtAuthenticationFilter(authenticationManager()))
+	        .addFilter(new JwtAuthorizationFilter(authenticationManager(),  this.userRepository))
 			.authorizeRequests()
 			.antMatchers("/swagger-ui.html")
 			.hasAuthority("ROLE_ADMIN")
@@ -40,8 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/users/*").hasAuthority("ROLE_ADMIN")
 			.antMatchers(HttpMethod.PUT,"/users/*").hasAuthority("ROLE_ADMIN")
 			//.antMatchers(HttpMethod.OPTIONS, "/users/*").permitAll()
-			.and()
-			.httpBasic();
+			.anyRequest().authenticated();
 		
 	}
 
